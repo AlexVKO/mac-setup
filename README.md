@@ -1,1 +1,60 @@
 # mac-setup
+- Sistem update
+- System pref
+  - Trackpad > Tap to click
+  - Keyboard > Key Repeat > Fast (all the way to the right)
+  - Keyboard > Delay Until Repeat > Short (all the way to the right)
+  - Dock > Automatically hide and show the Doc
+- Apps
+  - Slack
+  - Skype
+  - Homebrew
+  - Sass
+  - Git
+  - Ruby
+  - Phyton
+  - Go
+  - Elixir
+  - Nodejs
+  - Mongo
+  - Redis
+  - PostgreSQL
+  - Elastic search
+  - Folder learnspace/workspace
+  - Dropbox
+  - Docker
+  - Marked
+  - Heroku
+  - Chrome
+  - iterm2
+  - Xcode
+  - Seil
+  - Karabiner
+  - hammerspoon
+  - Alfred
+  - Spectacle app
+  - Spotify
+  - Hammerspoon
+- terminal
+  - oh-my-zsh
+    - auto-complete
+    - fuzzy finder
+    - enable some plugins
+    - alexvko.theme
+  - git integration
+  - tmux
+    - custom theme and base configutation
+    - tmp
+    - tmux-battery
+    - tmux-prefix-highlight
+    - tmux-resurrect
+    - tmux-continuum
+    - tmux-open
+    - tmux-net-speed
+    - tmux-sidebar
+    - tmux-cpu
+    - tmux-yank
+    - tmux-copycat
+    - tmux-pain-control
+    - vim-tmux
+    - vim   
