@@ -59,7 +59,7 @@ Installation.new("Homebrew").
 
     `printf 'export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"' >> ~/.zshrc`
     `export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"`
-  }.install!(unless_it_is_in_path: 'brew')
+  }.install!(unless: system("which brew"))
 
 Installation.new("Git").
   command('brew install git').
@@ -112,14 +112,14 @@ Installation.new("Openssl").
   on(:success) { `brew link openssl --force` }.
   install!
 
-# Installation.new("Ruby").
-#   command("rbenv install #{@configurations[:ruby_version]}").
-#   on(:success) {
-#     p "set ruby version #{@configurations[:ruby_version]} to default", :yellow
-#     `rbenv global "#{@configurations[:ruby_version]}"`
-#     `rbenv rehash`
-#   }.on(:fail) { abort }.
-#   install!
+Installation.new("Ruby").
+  command("rbenv install #{@configurations[:ruby_version]}").
+  on(:success) {
+    p "set ruby version #{@configurations[:ruby_version]} to default", :yellow
+    `rbenv global "#{@configurations[:ruby_version]}"`
+    `rbenv rehash`
+  }.on(:fail) { abort }.
+  install!(unless: system("rbenv global #{@configurations[:ruby_version]}"))
 
 Installation.new("Updating gems").
   command("gem update --system").
@@ -163,13 +163,24 @@ Installation.new("Grunt").
   install!
 
 Installation.new("Cask").
-  command("brew install caskroom/cask/brew-cask").
+  command("brew install cask").
+  on(:fail) {abort}.
   install!
 
 Installation.new("Launchrocket").
-  command("brew install launchrocket").
+  command("brew cask install launchrocket").
   install!
 
+
+
+
+p %{
+  /*==============================================
+  =            Lets install some apps            =
+  ==============================================*/
+}, :green
+
+# Custom application
 apps= %w(
   slack
   spotify
@@ -189,45 +200,46 @@ apps= %w(
   rescuetime
 )
 
-
 apps.each do |app|
   Question.new("Do you want to install #{app}?").
   on(:yes){
     install_cmd = "brew cask install --appdir='/Applications' #{app}"
     @custom_installations << Installation.new(app).command(install_cmd)
-  }.on(:no) { p "#{app} will not be installed", :red }
+  }.on(:no) { p "#{app} will not be installed", :red }.
   ask
 end
 
 @custom_installations.each(&:install!)
 
+
+
+
+
+p %{
+  /*============================================
+  =            now some fonts... :)            =
+  ============================================*/
+}, :green
+
 Installation.new("caskroom/fonts").
   command("brew tap caskroom/fonts").
+  on(:success) {
+    fonts= %w(
+      font-m-plus
+      font-clear-sans
+      font-roboto
+      font-open-sans
+      font-source-sans-pro
+      font-lobster
+      font-alegreya
+      font-montserrat
+      font-inconsolata
+      font-pt-sans
+      font-quattrocento-sans
+      font-quicksand
+      font-raleway
+      font-sorts-mill-goudy
+      font-ubuntu
+    ).each {|font| `brew cask install "#{font}"`}
+  }.
   install!
-
-# Installation.new("SSH").
-#  command("ls -al ~/.ssh").
-#  on(:success) {
-#   Question.new("Do you want to generate a ssh?").
-#   on(:yes) {
-#     p "Creating SSH key", :yellow
-#     `ssh-keygen -t rsa -b 4096 -C "#{@configurations.email}"`
-#   }
-#  }.install!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

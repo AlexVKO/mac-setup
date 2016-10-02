@@ -12,7 +12,7 @@ class Installation
   end
 
   def install! opts={}
-    if opts[:unless_it_is_in_path]
+    if opts[:unless]
       p "🤘 🤘 🤘  #{@program_name} installed and configured 🤘 🤘 🤘", :green
       return if `which "#{opts[:unless_it_is_in_path]}"`
     end
