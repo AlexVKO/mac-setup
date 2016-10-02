@@ -1,4 +1,4 @@
-# mac-setup
+# mac-setup (under construction)
 - Sistem update
 - System pref
   - Trackpad > Tap to click
