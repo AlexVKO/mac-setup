@@ -1,3 +1,5 @@
+require './lib/listener'
+
 class Question
   def initialize question
     p "#{question} (Y/n)", :yellow
@@ -13,7 +15,7 @@ class Question
   end
 
   def on(event, &block)
-    listeners << QuestionListener.new(self, event, &block)
+    listeners << Listener.new(self, event, &block)
     self
   end
 
@@ -49,4 +51,3 @@ class QuestionListener
     method_name == @event_method
   end
 end
-
