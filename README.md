@@ -7,9 +7,20 @@
   - Dock > Automatically hide and show the Doc
 - Apps
   - Slack
+  - floobits
   - Skype
   - Homebrew
   - Sass
+  - Whatsapp
+  - github desktop
+  - Valentina db
+  - App Cleaner
+  - OBS
+  - Screen Hero
+  - Boom2
+  - CamTwist
+  - PostgresApp
+  - Zoom
   - Git
   - Ruby
   - Phyton
