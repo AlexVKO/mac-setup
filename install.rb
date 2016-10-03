@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
 require './lib/string'
 require './lib/question'
-require './lib/instalation'
-
+require './lib/installation'
 
 # STARTS
 p %{
@@ -29,6 +28,7 @@ abort unless $?.success?
 #   on(:yes){ @answers[:install_without_ask] = true }.
 #   on(:no) { @answers[:install_without_ask] = false }.
 #   ask
+
 
 p "Checking Xcode ", :yellow
 
@@ -166,6 +166,23 @@ Installation.new("Grunt").
   command("npm install -g grunt-cli").
   install!
 
+
+Installation.new("Erlang").
+  command("brew install erlang").
+  install!
+
+Installation.new("Lua").
+  command("brew install lua").
+  install!
+
+Installation.new("Elixir").
+    command("brew install elixir").
+    on(:success){
+      p "Setting env var for elixir", :yellow
+      `printf 'export PATH="$PATH:/path/to/elixir/bin\n"' >> ~/.zshrc`
+    }.
+    install!
+
 Installation.new("Cask").
   command("brew install cask").
   on(:fail) {abort}.
@@ -175,14 +192,11 @@ Installation.new("Launchrocket").
   command("brew cask install launchrocket").
   install!
 
-
-
-
 p %{
   /*==============================================
   =            Lets install some apps            =
   ==============================================*/
-}, :green
+}, :cyan
 
 # Custom application
 apps= %w(
@@ -213,25 +227,25 @@ apps= %w(
 )
 
 apps.each do |app|
+  next if system("brew cask list | grep #{app}")
+
   Question.new("Do you want to install #{app}?").
-  on(:yes){
-    install_cmd = "brew cask install --appdir='/Applications' #{app}"
-    @custom_installations << Installation.new(app).command(install_cmd)
-  }.on(:no) { p "#{app} will not be installed", :red }.
-  ask
+    on(:yes){
+      install_cmd = "brew cask install --appdir='/Applications' #{app}"
+      @custom_installations << Installation.new(app).command(install_cmd)
+    }.on(:no) { p "#{app} will not be installed", :red }.
+    ask
+
+  p "--------------------------------"
 end
 
 @custom_installations.each(&:install!)
-
-
-
-
 
 p %{
   /*============================================
   =            now some fonts... :)            =
   ============================================*/
-}, :green
+}, :cyan
 
 Installation.new("caskroom/fonts").
   command("brew tap caskroom/fonts").
@@ -255,3 +269,166 @@ Installation.new("caskroom/fonts").
     ).each {|font| `brew cask install "#{font}"`}
   }.
   install!
+
+
+p "Quit preferences", :yellow
+`osascript -e 'tell application "System Preferences" to quit'`
+
+p "Disable the sound effects on boot", :yellow
+`sudo nvram SystemAudioVolume=" "`
+
+p "Disable the “Are you sure you want to open this application?” dialog", :yellow
+`defaults write com.apple.LaunchServices LSQuarantine -bool false`
+
+p "Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window", :yellow
+`sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName`
+
+p "Restart automatically if the computer freezes", :yellow
+`sudo systemsetup -setrestartfreeze on`
+
+p "Disable smart quotes as they’re annoying when typing code", :yellow
+`defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false`
+
+p "Disable smart dashes as they’re annoying when typing code", :yellow
+`defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false`
+
+p "Trackpad: enable tap to click for this user and for the login screen", :yellow
+`defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true`
+`defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1`
+`defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1`
+
+p "Increase sound quality for Bluetooth headphones/headsets", :yellow
+`defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40`
+
+p "Enable full keyboard access for all controls", :yellow
+`defaults write NSGlobalDomain AppleKeyboardUIMode -int 3`
+
+p "Use scroll gesture with the Ctrl (^) modifier key to zoom", :yellow
+`defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true`
+`defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144`
+`defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true`
+
+p "Disable press-and-hold for keys in favor of key repeat", :yellow
+`defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false`
+
+p "Set a blazingly fast keyboard repeat rate", :yellow
+`defaults write NSGlobalDomain KeyRepeat -int 1`
+`defaults write NSGlobalDomain InitialKeyRepeat -int 10`
+
+p "Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)", :yellow
+`defaults write com.apple.screencapture type -string "JPG"`
+
+p "Disable shadow in screenshots", :yellow
+`defaults write com.apple.screencapture disable-shadow -bool true`
+
+p "Enable subpixel font rendering on non-Apple LCDs", :yellow
+`defaults write NSGlobalDomain AppleFontSmoothing -int 2`
+
+p "Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons", :yellow
+`defaults write com.apple.finder QuitMenuItem -bool true`
+
+p "Set Desktop as the default location for new Finder windows", :yellow
+# For other paths, use `PfLo` and `file:///full/path/here/`
+`defaults write com.apple.finder NewWindowTarget -string "PfDe"`
+`defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"`
+
+p "Show icons for hard drives, servers, and removable media on the desktop", :yellow
+`defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true`
+`defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true`
+`defaults write com.apple.finder ShowMountedServersOnDesktop -bool true`
+`defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true`
+
+
+p "Finder: show status bar", :yellow
+`defaults write com.apple.finder ShowStatusBar -bool true`
+
+p "Finder: show path bar", :yellow
+`defaults write com.apple.finder ShowPathbar -bool true`
+
+p "When performing a search, search the current folder by default", :yellow
+`defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"`
+
+p "Disable disk image verification", :yellow
+`defaults write com.apple.frameworks.diskimages skip-verify -bool true`
+`defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true`
+`defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true`
+
+p "Automatically open a new Finder window when a volume is mounted", :yellow
+`defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true`
+`defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true`
+`defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true`
+
+p "Disable the warning before emptying the Trash", :yellow
+`defaults write com.apple.finder WarnOnEmptyTrash -bool false`
+
+p "Show the ~/Library folder", :yellow
+`chflags nohidden ~/Library`
+
+p "Show the /Volumes folder", :yellow
+`sudo chflags nohidden /Volumes`
+
+p "Enable highlight hover effect for the grid view of a stack (Dock)", :yellow
+`defaults write com.apple.dock mouse-over-hilite-stack -bool true`
+
+p "Set the icon size of Dock items to 36 pixels", :yellow
+`defaults write com.apple.dock tilesize -int 36`
+
+p "Change minimize/maximize window effect", :yellow
+`defaults write com.apple.dock mineffect -string "scale"`
+
+p "Minimize windows into their application’s icon", :yellow
+`defaults write com.apple.dock minimize-to-application -bool true`
+
+p "Disable Dashboard", :yellow
+`defaults write com.apple.dashboard mcx-disabled -bool true`
+
+p "Don’t show Dashboard as a Space", :yellow
+`defaults write com.apple.dock dashboard-in-overlay -bool true`
+
+p "Make Dock icons of hidden applications translucent", :yellow
+`defaults write com.apple.dock showhidden -bool true`
+
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+p "Top right screen corner → Mission Control", :yellow
+`defaults write com.apple.dock wvous-tr-corner -int 2`
+`defaults write com.apple.dock wvous-tr-modifier -int 0`
+p "Bottom right screen corner → Desktop", :yellow
+`defaults write com.apple.dock wvous-br-corner -int 4`
+`defaults write com.apple.dock wvous-br-modifier -int 0`
+p "Bottom left screen corner → Desktop", :yellow
+`defaults write com.apple.dock wvous-br-corner -int 11`
+`defaults write com.apple.dock wvous-br-modifier -int 0`
+
+
+p "Enable the Develop menu and the Web Inspector in Safari", :yellow
+`defaults write com.apple.Safari IncludeDevelopMenu -bool true`
+`defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true`
+`defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true`
+
+p "Only use UTF-8 in Terminal.app", :yellow
+`defaults write com.apple.terminal StringEncodings -array 4`
+
+p "Show the main window when launching Activity Monitor", :yellow
+`defaults write com.apple.ActivityMonitor OpenMainWindow -bool true`
+
+p "Visualize CPU usage in the Activity Monitor Dock icon", :yellow
+`defaults write com.apple.ActivityMonitor IconType -int 5`
+
+p "Turn on app auto-update", :yellow
+`defaults write com.apple.commerce AutoUpdate -bool true`
+
+p "Prevent Photos from opening automatically when devices are plugged in", :yellow
+`defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true`
+
+

@@ -3,7 +3,6 @@ require './lib/listener'
 class Installation
   def initialize program_name
     @program_name = program_name
-    p "installing #{program_name}", :yellow
   end
 
   def command(command)
@@ -12,6 +11,7 @@ class Installation
   end
 
   def install! opts={}
+    p "installing #{@program_name}", :yellow
     if opts[:unless]
       p "🤘 🤘 🤘  #{@program_name} installed and configured 🤘 🤘 🤘", :green
       return if `which "#{opts[:unless_it_is_in_path]}"`
