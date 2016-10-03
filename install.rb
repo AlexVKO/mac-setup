@@ -146,6 +146,10 @@ Installation.new("Ruby on Rails").
   command("gem install rails").
   install!
 
+Installation.new("SASS").
+  command("gem install sass").
+  install!
+
 Installation.new("Heroku").
   command("brew install heroku-toolbelt").
   install!
@@ -182,22 +186,30 @@ p %{
 
 # Custom application
 apps= %w(
-  slack
-  spotify
-  google-chrome
-  dropbox
+  alfred
   appcleaner
-  firefox
-  mou
+  atom
+  camtwist
+  dropbox
+  github-desktop
+  google-chrome
+  hammerspoon
   iterm2
+  karabiner
   macvim
-  sublime-text
-  gitx
-  testflight
-  vlc
-  google-drive
-  tomighty
+  obs
   rescuetime
+  screenhero
+  seil
+  skype
+  slack
+  spectacle
+  spotify
+  sublime-text
+  tomighty
+  valentina-studio
+  whatsapp
+  zoom
 )
 
 apps.each do |app|
