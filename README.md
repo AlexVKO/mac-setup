@@ -1,13 +1,6 @@
 # mac-setup (under construction) ps: Written in ruby just for fun :P
 - Sistem Preferences
-  - Remove unecssary  icons from dock
-  - Preferences > Trackpad > Tap to click 
-  - Preferences > Accessibility > Trackpad > Enable draging > three fingers
-  - Preferences > Desktop > Screen Server > Hot corners (right-top = Desktop, left-bottom = launchpad)
-  - Preferences > Keyboard > Key Repeat > Fast (all the way to the right)
-  - Preferences > Keyboard > User fx keys as standant function keys
-  - Dock > Automatically hide and show the Doc
-  - Dock > Minimize window into application icon
+  it does a lot of things!!!!
 - Apps
   - Slack ok
   - floobits
