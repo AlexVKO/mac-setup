@@ -73,6 +73,10 @@ Installation.new("Postgres").
   command('brew install postgresql --no-python').
   install!
 
+Installation.new("Redis").
+  command('brew install redis').
+  install!
+
 Installation.new("Neovim").
   command('brew install neovim/neovim/neovim').
   on(:success) {}.# todo: alias vi=nvim
@@ -204,6 +208,7 @@ apps= %w(
   appcleaner
   atom
   camtwist
+  docker
   dropbox
   github-desktop
   google-chrome
