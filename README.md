@@ -1,0 +1,76 @@
+# mac-setup (under construction) ps: Written in ruby just for fun :P
+- Sistem Preferences
+  - Remove unecssary  icons from dock
+  - Preferences > Trackpad > Tap to click 
+  - Preferences > Accessibility > Trackpad > Enable draging > three fingers
+  - Preferences > Desktop > Screen Server > Hot corners (right-top = Desktop, left-bottom = launchpad)
+  - Preferences > Keyboard > Key Repeat > Fast (all the way to the right)
+  - Preferences > Keyboard > User fx keys as standant function keys
+  - Dock > Automatically hide and show the Doc
+  - Dock > Minimize window into application icon
+- Apps
+  - Slack ok
+  - floobits
+  - Skype ok
+  - Homebrew ok
+  - Sass 
+  - Whatsapp
+  - github desktop ok
+  - Valentina db
+  - App Cleaner
+  - OBS
+  - Screen Hero
+  - Boom2
+  - CamTwist
+  - PostgresApp
+  - Zoom
+  - Git
+  
+  - Ruby
+  - Phyton
+  - Go
+  - Elixir
+  - Nodejs
+  - Mongo
+  - Redis
+  - PostgreSQL
+  - Elastic search
+  - Folder learnspace/workspace
+  - Dropbox
+  - Docker
+  - Marked
+  - Heroku
+  - Chrome
+  - iterm2
+  - Xcode
+  - Seil
+  - Karabiner
+  - hammerspoon
+  - Alfred
+  - Spectacle app
+  - Spotify
+  - Hammerspoon
+- terminal
+  - oh-my-zsh  OK
+    - auto-complete
+    - fuzzy finder
+    - enable some plugins
+    - alexvko.theme
+  - git integration
+  - tmux
+    - custom theme and base configutation
+    - tmp
+    - tmux-battery
+    - tmux-prefix-highlight
+    - tmux-resurrect
+    - tmux-continuum
+    - tmux-open
+    - tmux-net-speed
+    - tmux-sidebar
+    - tmux-cpu
+    - tmux-yank
+    - tmux-copycat
+    - tmux-pain-control
+    - vim-tmux
+    - vim   
+
