@@ -3,13 +3,17 @@ class String
     color_code =
     case color
     when :red
-      "\e[1;31;40m"
+      "\e[91m"
     when :green
-      "\e[1;32;40m"
+      "\e[92m"
     when :yellow
-      "\e[1;33;40m"
+      "\e[93m"
     when :blue
-      "\e[1;34m"
+      "\e[94m"
+    when :magenta
+      "\e[95m"
+    when :cyan
+      "\e[96m"
     else
       "\e[0m"
     end
