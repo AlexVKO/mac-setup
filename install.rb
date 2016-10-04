@@ -318,7 +318,7 @@ p "Disable press-and-hold for keys in favor of key repeat", :yellow
 
 p "Set a blazingly fast keyboard repeat rate", :yellow
 `defaults write NSGlobalDomain KeyRepeat -int 1`
-`defaults write NSGlobalDomain InitialKeyRepeat -int 10`
+`defaults write NSGlobalDomain InitialKeyRepeat -int 15`
 
 p "Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)", :yellow
 `defaults write com.apple.screencapture type -string "JPG"`
