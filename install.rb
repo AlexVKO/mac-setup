@@ -90,6 +90,10 @@ Installation.new("rbenv").
   command('brew install rbenv').
   install!
 
+Installation.new("pip").
+  command('easy_install pip').
+  install!
+
 Installation.new("rbenv").
   command('brew install rbenv').
   on(:success) {
