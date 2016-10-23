@@ -24,13 +24,14 @@ I devided it between 4 parts:
   - you can see the apps here https://github.com/AlexVKO/mac-setup/blob/master/install.rb#L210
  - Fonts
   - Check the fonts here https://github.com/AlexVKO/mac-setup/blob/master/install.rb#L259
- - OS Configurations, a bunch of configurations for improvments for your OS ! check it out the script.
+ - OS Configurations, a bunch of configurations for improvments for your OS !
   - Check the configurations here https://github.com/AlexVKO/mac-setup/blob/master/install.rb#L283
 
 Todo:
 - Create a script to prevent clone/download
 - Set up the rc files. (vim, hammerspoon, tmux, sublime,  etc...)
 - Documentation generator
+- Take a time to improve this document
 - Display a instalation's log on finished
 - Make it a library easy to init
 - Create a site to store and share repos of scripts (simple list and details from readme)
