@@ -12,7 +12,7 @@ Installation.new("Bundler").
     number_of_cores=`sysctl -n hw.ncpu`.to_i - 1
     `bundle config --global jobs "#{number_of_cores}"`
   }.
-  on(:fail){abort}
+  on(:fail){abort}.
   install!
 ```
 
