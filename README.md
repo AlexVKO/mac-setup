@@ -1,69 +1,36 @@
-# mac-setup (under construction) ps: Written in ruby just for fun :P
-- Sistem Preferences
-  it does a lot of things!!!!
-- Apps
-  - Slack ok
-  - floobits
-  - Skype ok
-  - Homebrew ok
-  - Sass 
-  - Whatsapp
-  - github desktop ok
-  - Valentina db
-  - App Cleaner
-  - OBS
-  - Screen Hero
-  - Boom2
-  - CamTwist
-  - PostgresApp
-  - Zoom
-  - Git
-  
-  - Ruby
-  - Phyton
-  - Go
-  - Elixir
-  - Nodejs
-  - Mongo
-  - Redis
-  - PostgreSQL
-  - Elastic search
-  - Folder learnspace/workspace
-  - Dropbox
-  - Docker
-  - Marked
-  - Heroku
-  - Chrome
-  - iterm2
-  - Xcode
-  - Seil
-  - Karabiner
-  - hammerspoon
-  - Alfred
-  - Spectacle app
-  - Spotify
-  - Hammerspoon
-- terminal
-  - oh-my-zsh  OK
-    - auto-complete
-    - fuzzy finder
-    - enable some plugins
-    - alexvko.theme
-  - git integration
-  - tmux
-    - custom theme and base configutation
-    - tmp
-    - tmux-battery
-    - tmux-prefix-highlight
-    - tmux-resurrect
-    - tmux-continuum
-    - tmux-open
-    - tmux-net-speed
-    - tmux-sidebar
-    - tmux-cpu
-    - tmux-yank
-    - tmux-copycat
-    - tmux-pain-control
-    - vim-tmux
-    - vim   
+# Mac setup
+### What it does?
+It Installs everythink you need to up and running development environmen on you mac
+Written in Ruby just for FUN, and using some nice Design Patterns, so that it's REALLY easy to understand and maintain.
+With that you can explicitly do what you need on a `success` command, and if this command is required on another, you can simple abort the instalation of the whole script with `fail`, with a very nice and readable sintax, like this:
 
+```ruby
+Installation.new("Bundler").
+  command("gem install bundler").
+  on(:success) {
+    p "Optimizing Bundler...", :yellow
+    number_of_cores=`sysctl -n hw.ncpu`.to_i - 1
+    `bundle config --global jobs "#{number_of_cores}"`
+  }.
+  on(:fail){abort}
+  install!
+```
+
+This is script is already installing a BUNCH of cool things for you.
+
+I devided it between 4 parts:
+ - DevTools: it will install tools, languages, frameworks, terminal, ec, (i.e. homebrew, oh-my-zsh, Ruby, Ruby on Rails, etc..)
+ - Applications
+  - you can see the apps here https://github.com/AlexVKO/mac-setup/blob/master/install.rb#L210
+ - Fonts
+  - Check the fonts here https://github.com/AlexVKO/mac-setup/blob/master/install.rb#L259
+ - OS Configurations, a bunch of configurations for improvments for your OS ! check it out the script.
+  - Check the configurations here https://github.com/AlexVKO/mac-setup/blob/master/install.rb#L283
+
+Todo:
+- Create a script to prevent clone/download
+- Set up the rc files. (vim, hammerspoon, tmux, sublime,  etc...)
+- Documentation generator
+- Display a instalation's log on finished
+- Make it a library easy to init
+- Create a site to store and share repos of scripts (simple list and details from readme)
