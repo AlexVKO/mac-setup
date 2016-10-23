@@ -16,7 +16,7 @@ Installation.new("Bundler").
   install!
 ```
 
-This is script is already installing a BUNCH of cool things for you.
+This script is already installing a BUNCH of cool things for you.
 
 I devided it between 4 parts:
  - DevTools: it will install tools, languages, frameworks, terminal, ec, (i.e. homebrew, oh-my-zsh, Ruby, Ruby on Rails, etc..)
