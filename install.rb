@@ -69,6 +69,10 @@ Installation.new("Git").
   }.
   install!
 
+Installation.new("Hub").
+  command('brew install hub').
+  install!
+
 Installation.new("Postgres").
   command('brew install postgresql --no-python').
   install!
