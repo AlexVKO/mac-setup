@@ -9,8 +9,8 @@ Installation.new("Bundler").
   command("gem install bundler").
   on(:success) {
     p "Optimizing Bundler...", :yellow
-    number_of_cores=`sysctl -n hw.ncpu`.to_i - 1
-    `bundle config --global jobs "#{number_of_cores}"`
+    number_of_cores=`sysctl -n hw.ncpu`.to_i
+    `bundle config --global jobs "#{number_of_cores - 1}"`
   }.
   on(:fail){abort}.
   install!

@@ -191,6 +191,10 @@ Installation.new("Elixir").
     }.
     install!
 
+Installation.new("Phoenix").
+    command("mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez").
+    install!
+
 Installation.new("Cask").
   command("brew install cask").
   on(:fail) {abort}.
@@ -439,5 +443,3 @@ p "Turn on app auto-update", :yellow
 
 p "Prevent Photos from opening automatically when devices are plugged in", :yellow
 `defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true`
-
-
