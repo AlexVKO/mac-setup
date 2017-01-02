@@ -196,7 +196,13 @@ Installation.new("Phoenix").
     install!
 
 Installation.new("Cask").
-  command("brew install cask").
+  command("
+  if brew ls --versions cask > /dev/null; then
+    echo 'Cask is installed'
+  else
+    brew install cask
+  fi
+  ").
   on(:fail) {abort}.
   install!
 
@@ -238,7 +244,6 @@ apps= %w(
   whatsapp
   zoom
 )
-
 apps.each do |app|
   next if system("brew cask list | grep #{app}")
 
