@@ -290,6 +290,8 @@ p %{
     erb-helper
     file-icons
     floobits
+    pull-request
+    create-github-repo
     git-plus
     linter
     narrow
