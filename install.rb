@@ -232,12 +232,10 @@ apps= %w(
   google-chrome
   hammerspoon
   iterm2
-  karabiner
+  karabiner-elements
   macvim
   obs
-  rescuetime
   screenhero
-  seil
   skype
   slack
   spectacle
