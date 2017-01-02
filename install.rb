@@ -87,7 +87,10 @@ Installation.new("Redis").
 
 Installation.new("Neovim").
   command('brew install neovim/neovim/neovim').
-  on(:success) {}.# todo: alias vi=nvim
+  on(:success) {
+    `curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+  }.
   install!
 
 Installation.new("ImageMagick").
@@ -103,7 +106,7 @@ Installation.new("pip").
   install!
 
 Installation.new("AWS-cli").
-  command('sudo pip install --ignore-installed awscli '). 
+  command('sudo pip install --ignore-installed awscli ').
   install!
 
 Installation.new("rbenv").
