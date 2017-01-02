@@ -241,11 +241,11 @@ apps= %w(
   spectacle
   spotify
   sublime-text
-  tomighty
   postico
   whatsapp
   zoom
 )
+
 apps.each do |app|
   next if system("brew cask list | grep #{app}")
 
@@ -262,60 +262,52 @@ end
 @custom_installations.each(&:install!)
 
 
-if @custom_installations.include? "atom"
-  p %{
-    /*============================================
-    =            Atom configutation            =
-    ============================================*/
-    }, :cyan
+# Atom
+p %{
+  /*============================================
+  =            Atom configutation            =
+  ============================================*/
+  }, :cyan
 
-    atom_packages = %w{
-      advanced-open-file
-      atom-typescript
-      change-case
-      clipboard-history
-      cursor-history
-      emmet
-      erb-helper
-      file-icons
-      floobits
-      git-plus
-      linter
-      narrow
-      open-this
-      paner
-      pigments
-      rails-latest-migration
-      rails-partials
-      rails-rspec
-      rails-snippets
-      react
-      smalls
-      toggle
-      vim-mode-plus
-      vim-mode-plus-ex-mode
-      atom-clock
-      autocomplete-elixir
-      language-elixir
-      linger-write-good
-      phoenix-elixir-spinnets
-      zentabs
-      phoenix-migrations-navigation
-      phoenix-toggle-test
-    }
+  atom_packages = %w{
+    advanced-open-file
+    atom-typescript
+    change-case
+    clipboard-history
+    cursor-history
+    emmet
+    erb-helper
+    file-icons
+    floobits
+    git-plus
+    linter
+    narrow
+    open-this
+    paner
+    pigments
+    rails-latest-migration
+    rails-partials
+    rails-rspec
+    rails-snippets
+    react
+    smalls
+    toggle
+    vim-mode-plus
+    vim-mode-plus-ex-mode
+    atom-clock
+    autocomplete-elixir
+    language-elixir
+    linter-write-good
+    phoenix-elixir-spinnets
+    zentabs
+    phoenix-migrations-navigation
+    phoenix-toggle-test
+  }
 
-    Installation.new("Atom Packages").
-    command("apm install #{atom_packages.join(' ')}").
-    install!
-end
-
-if @custom_installations.include? "hammerspoon"
-
-end
-
-if @custom_installations.include? ""
-
-end
+  Installation.new("Atom Packages").
+  command("apm install #{atom_packages.join(' ')}").
+  on(:fail) { puts "Atom not installed" }.
+  install!
 
 p %{
   /*============================================
