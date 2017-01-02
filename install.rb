@@ -73,6 +73,10 @@ Installation.new("Hub").
   command('brew install hub').
   install!
 
+Installation.new("Mosh").
+  command('brew install mobile-shell').
+  install!
+
 Installation.new("Postgres").
   command('brew install postgresql --no-python').
   install!
