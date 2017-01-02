@@ -259,6 +259,29 @@ end
 
 @custom_installations.each(&:install!)
 
+
+if @custom_installations.include? "atom"
+  p %{
+    /*============================================
+    =            Atom configutation            =
+    ============================================*/
+    }, :cyan
+
+    atom_packages = [
+      'advanced-open-file', 'atom-typescript', 'change-case', 'clipboard-history',
+      'cursor-history', 'emmet', 'erb-helper', 'file-icons', 'floobits', 'git-plus',
+      'linter', 'narrow', 'open-this', 'paner', 'pigments', 'rails-latest-migration',
+      'rails-partials', 'rails-rspec', 'rails-snippets', 'react', 'smalls', 'toggle',
+      'vim-mode-plus', 'vim-mode-plus-ex-mode', 'atom-clock', 'autocomplete-elixir',
+      'language-elixir', 'linger-write-good', 'phoenix-elixir-spinnets', 'zentabs',
+      'phoenix-migrations-navigation', 'phoenix-toggle-test'
+    ]
+
+    Installation.new("Atom Packages").
+    command("apm install #{atom_packages.join(' ')}").
+    install!
+end
+
 p %{
   /*============================================
   =            now some fonts... :)            =
