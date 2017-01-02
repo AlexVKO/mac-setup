@@ -21,7 +21,7 @@ abort unless $?.success?
 @configurations = {
   name: "Alex VKO",
   email: "ale@alexvko.com",
-  ruby_version: '2.3.0'
+  ruby_version: '2.4.0'
 }
 
 # Question.new("Should I install everything without your confirmation?").
@@ -267,15 +267,40 @@ if @custom_installations.include? "atom"
     ============================================*/
     }, :cyan
 
-    atom_packages = [
-      'advanced-open-file', 'atom-typescript', 'change-case', 'clipboard-history',
-      'cursor-history', 'emmet', 'erb-helper', 'file-icons', 'floobits', 'git-plus',
-      'linter', 'narrow', 'open-this', 'paner', 'pigments', 'rails-latest-migration',
-      'rails-partials', 'rails-rspec', 'rails-snippets', 'react', 'smalls', 'toggle',
-      'vim-mode-plus', 'vim-mode-plus-ex-mode', 'atom-clock', 'autocomplete-elixir',
-      'language-elixir', 'linger-write-good', 'phoenix-elixir-spinnets', 'zentabs',
-      'phoenix-migrations-navigation', 'phoenix-toggle-test'
-    ]
+    atom_packages = %w{
+      advanced-open-file
+      atom-typescript
+      change-case
+      clipboard-history
+      cursor-history
+      emmet
+      erb-helper
+      file-icons
+      floobits
+      git-plus
+      linter
+      narrow
+      open-this
+      paner
+      pigments
+      rails-latest-migration
+      rails-partials
+      rails-rspec
+      rails-snippets
+      react
+      smalls
+      toggle
+      vim-mode-plus
+      vim-mode-plus-ex-mode
+      atom-clock
+      autocomplete-elixir
+      language-elixir
+      linger-write-good
+      phoenix-elixir-spinnets
+      zentabs
+      phoenix-migrations-navigation
+      phoenix-toggle-test
+    }
 
     Installation.new("Atom Packages").
     command("apm install #{atom_packages.join(' ')}").
