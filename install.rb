@@ -103,7 +103,7 @@ Installation.new("pip").
   install!
 
 Installation.new("AWS-cli").
-  command('sudo pip install awscli').
+  command('sudo pip install --ignore-installed awscli '). 
   install!
 
 Installation.new("rbenv").
@@ -306,7 +306,7 @@ p %{
     autocomplete-elixir
     language-elixir
     linter-write-good
-    phoenix-elixir-spinnets
+    phoenix-elixir-snippets
     zentabs
     phoenix-migrations-navigation
     phoenix-toggle-test
