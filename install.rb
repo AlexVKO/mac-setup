@@ -98,6 +98,10 @@ Installation.new("pip").
   command('sudo easy_install pip').
   install!
 
+Installation.new("AWS-cli").
+  command('sudo pip install awscli').
+  install!
+
 Installation.new("rbenv").
   command('brew install rbenv').
   on(:success) {
