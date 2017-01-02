@@ -95,7 +95,7 @@ Installation.new("rbenv").
   install!
 
 Installation.new("pip").
-  command('easy_install pip').
+  command('sudo easy_install pip').
   install!
 
 Installation.new("rbenv").
