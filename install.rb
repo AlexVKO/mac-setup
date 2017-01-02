@@ -240,7 +240,7 @@ apps= %w(
   spotify
   sublime-text
   tomighty
-  valentina-studio
+  postico
   whatsapp
   zoom
 )
@@ -305,6 +305,14 @@ if @custom_installations.include? "atom"
     Installation.new("Atom Packages").
     command("apm install #{atom_packages.join(' ')}").
     install!
+end
+
+if @custom_installations.include? "hammerspoon"
+
+end
+
+if @custom_installations.include? ""
+
 end
 
 p %{
