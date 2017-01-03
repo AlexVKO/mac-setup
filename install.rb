@@ -73,6 +73,10 @@ Installation.new("Hub").
   command('brew install hub').
   install!
 
+Installation.new("Tmux").
+  command('brew install tmux').
+  install!
+
 Installation.new("Mosh").
   command('brew install mobile-shell').
   install!
