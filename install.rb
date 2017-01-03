@@ -64,8 +64,8 @@ Installation.new("Homebrew").
 Installation.new("Git").
   command('brew install git').
   on(:success) {
-    `git config --global user.name #{"@configurations.name"}`
-    `git config --global user.email #{"@configurations.email"}`
+    `git config --global user.name "#{@configurations.name}"`
+    `git config --global user.email "#{@configurations.email}"`
   }.
   install!
 
