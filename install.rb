@@ -225,6 +225,14 @@ Installation.new("Cask").
   on(:fail) {abort}.
   install!
 
+Installation.new("Cordova").
+  command("sudo npm install -g cordova").
+  on(:success){
+    p "Installing Ionic", :yellow
+    `sudo npm install -g ionic`
+  }.
+  install!
+
 Installation.new("Launchrocket").
   command("brew cask install launchrocket").
   install!
