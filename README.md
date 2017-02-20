@@ -1,8 +1,8 @@
 # Mac setup
-### What it does?
-It Installs everythink you need to up and running development environmen on you mac
+
+It Installs everythink you need to make up and running development environmen on you mac
 Written in Ruby just for FUN, and using some nice Design Patterns, so that it's REALLY easy to understand and maintain.
-With that you can explicitly do what you need on a `success` command, and if this command is required on another, you can simple abort the instalation of the whole script with `fail`, with a very nice and readable sintax, like this:
+With that you can explicitly do what you need on a `success` callback, and if this command is required on another, you can simple abort the instalation of the whole script with `fail`, with a very nice and readable sintax, like this:
 
 ```ruby
 Installation.new("Bundler").
