@@ -16,11 +16,17 @@ p  "For this I will need sudo permissions.. do you trust me? :P ", :red
 `sudo -v`
 abort unless $?.success?
 
+p "Insert your Github credentials", :yellow
+puts "Name: "
+name = gets.chomp
+puts "E-mail: "
+email = gets.chomp
+
 # Global vars
 @custom_installations = []
 @configurations = {
-  name: "Alex VKO",
-  email: "ale@alexvko.com",
+  name: name,
+  email: email,
   ruby_version: '2.4.0'
 }
 
@@ -28,7 +34,6 @@ abort unless $?.success?
 #   on(:yes){ @answers[:install_without_ask] = true }.
 #   on(:no) { @answers[:install_without_ask] = false }.
 #   ask
-
 
 p "Checking Xcode ", :yellow
 
@@ -62,12 +67,18 @@ Installation.new("Homebrew").
   }.install!(unless: system("which brew"))
 
 Installation.new("Git").
-  command('brew install git').
-  on(:success) {
-    `git config --global user.name "#{@configurations.name}"`
-    `git config --global user.email "#{@configurations.email}"`
-  }.
-  install!
+    command("
+  if brew ls --versions git > /dev/null; then
+    echo 'Git is installed'
+  else
+    brew install git
+  fi
+  ").
+    on(:fail) {abort}.
+    on(:success) {
+      `git config --global user.name "#{@configurations[:name]}`
+      `git config --global user.email "#{@configurations[:email]}`
+    }
 
 Installation.new("Hub").
   command('brew install hub').
