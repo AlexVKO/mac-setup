@@ -213,6 +213,10 @@ Installation.new("Lua").
   command("brew install lua").
   install!
 
+Installation.new("Graphviz").
+  command("brew install graphviz").
+  install!
+
 Installation.new("Elixir").
     command("brew install elixir").
     on(:success){
