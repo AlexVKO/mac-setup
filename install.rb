@@ -217,6 +217,10 @@ Installation.new("Graphviz").
   command("brew install graphviz").
   install!
 
+Installation.new("Mounty").
+  command("brew cask install mounty").
+  install!
+
 Installation.new("Elixir").
     command("brew install elixir").
     on(:success){
