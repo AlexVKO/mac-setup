@@ -217,10 +217,6 @@ Installation.new("Graphviz").
   command("brew install graphviz").
   install!
 
-Installation.new("Mounty").
-  command("brew cask install mounty").
-  install!
-
 Installation.new("Etcher").
   command("brew cask install etcher").
   install!
